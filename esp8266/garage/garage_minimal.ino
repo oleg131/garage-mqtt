@@ -1,12 +1,3 @@
-/*
-   ESP8266 + AWS IoT + ThingSpeak (AwsIotWiFiClient version)
-   ---------------------------------------------------------
-   - Connects to Wi-Fi
-   - Establishes TLS to AWS IoT Core using AwsIotWiFiClient
-   - Subscribes to topic "garage"
-   - Sets output pin to HIGH for a few seconds
-*/
-
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecureBearSSL.h>
@@ -166,6 +157,7 @@ void setup()
   }
   Serial.printf("\n[WiFi] Connected! IP: %s\n", WiFi.localIP().toString().c_str());
 
+  // Necessary for MQTT client to authenticate
   syncTime();
 
   // Configure TLS certificates (needed once per session)
